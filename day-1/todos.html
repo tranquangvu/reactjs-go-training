@@ -1,0 +1,173 @@
+<html>
+  <head>
+    <script src='https://unpkg.com/react@16/umd/react.development.js'></script>
+    <script src='https://unpkg.com/react-dom@16/umd/react-dom.development.js'></script>
+    <script src='https://unpkg.com/babel-standalone@6.15.0/babel.min.js'></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='root'></div>
+    <script type='text/babel'>
+      class Header extends React.Component {
+        render() {
+          const { appName = 'Day 2 Todos', onClearTodos, onFetchTodos } = this.props;
+
+          return (
+            <div
+              className='header-container'
+              style={{
+                marginBottom: 20,
+                textAlign: 'center',
+              }}
+            >
+              <h1>{appName}</h1>
+              <button onClick={onClearTodos}>Clear</button>&nbsp;
+              <button onClick={onFetchTodos}>Fetch</button>
+            </div>
+          );
+        }
+      }
+
+      class TodoItem extends React.Component {
+        render() {
+          const { title, completed } = this.props;
+
+          return (
+            <div
+              className='todo-item-container'
+              style={{
+                padding: '5px 10px',
+                marginBottom: 10,
+                borderRadius: 8,
+                background: 'rgba(0, 0, 0, .25)',
+              }}
+            >
+              {title} - {completed ? 'Done' : 'Undone'}
+            </div>
+          );
+        }
+      }
+
+      class Todos extends React.Component {
+        render() {
+          const { todos } = this.props;
+
+          if (todos.length === 0) {
+            return (
+              <p>No todo</p>
+            );
+          }
+
+          return (
+            <div className='todos-container'>
+              {todos.map(({ id, title, completed }) => (
+                <TodoItem
+                  key={id}
+                  title={title}
+                  completed={completed}
+                />
+              ))}
+            </div>
+          );
+        }
+      }
+
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+
+          this.state = {
+            todos: [],
+            loading: false,
+          };
+        }
+
+        componentDidMount() {
+          this.fetchTodos();
+        }
+
+        clearTodos = () => {
+          this.setState({
+            todos: [],
+          });
+        }
+
+        fetchTodos = () => {
+          this.setState({ loading: true });
+
+          fetch('https://jsonplaceholder.typicode.com/todos')
+            .then(response => response.json())
+            .then(todos => {
+              this.setState({
+                todos,
+                loading: false
+              });
+            })
+            .catch(error => {
+              console.log('Fail to fetch todos');
+              throw error;
+            });
+        }
+
+        render() {
+          const { loading, todos } = this.state;
+
+          if (loading) {
+            return (
+              <div
+                className='spiner-container'
+                style={{
+                  background: 'rgba(255, 255, 255, 0.75)',
+                  textAlign: 'center',
+                  position: 'fixed',
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                Loading....
+              </div>
+            );
+          }
+
+          return (
+            <div
+              className='app-container'
+              style={{
+                width: '50%',
+                padding: 20,
+                margin: '40px auto',
+                background: 'white',
+                textAlign: 'center',
+                borderRadius: 8,
+              }}
+            >
+              <Header
+                appName='Todos'
+                onClearTodos={this.clearTodos}
+                onFetchTodos={this.fetchTodos}
+              />
+              <Todos
+                todos={todos}
+              />
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(
+        <App />,
+        document.getElementById('root')
+      );
+    </script>
+  </body>
+</html>
