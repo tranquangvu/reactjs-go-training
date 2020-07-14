@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      color: #4d4d4d;
+    }
+
+    .app-container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      background: #f5f5f5;
+      min-height: 100vh;
+    }
+
+    .todo-container {
+      width: 550px;
+      margin: 40px auto;
+    }
+
+    .todo-form-container {
+      padding: 15px;
+      background: white;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .todo-form-container input {
+      color: #4d4d4d;
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 33px;
+      font-family: 'Lato', sans-serif;
+      width: 100%;
+      height: 33px;
+      outline: none;
+      border: none;
+    }
+
+    .todo-list-container {
+      background: white;
+      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin: 15px auto;
+      overflow: hidden;
+    }
+
+    .todo-item-container {
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .todo-item-container:hover .todo-item-options {
+      visibility: visible;
+    }
+
+    .todo-item-container:not(:last-child) {
+      border-bottom: 1px solid #ededed;
+    }
+
+    .todo-item-toggle {
+      width: 30px;
+      height: 30px;
+      display: block;
+      cursor: pointer;
+    }
+
+    .todo-item-toggle img {
+      max-width: 100%;
+    }
+
+    .todo-item-content {
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.25;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .todo-item-content.completed {
+      color: #d9d9d9;
+      text-decoration: line-through;
+    }
+
+    .todo-item-options {
+      flex: 0;
+      display: flex;
+      align-items: center;
+      visibility: hidden;
+    }
+
+    .todo-item-options .icon-btn {
+      width: 15px;
+      height: 15px;
+      display: block;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+
+    .todo-item-options .icon-btn img {
+      max-width: 100%;
+    }
+
+    .todo-footer-container {
+      position: relative;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .todo-menus a {
+      color: #777;
+      font-weight: 300;
+      text-decoration: none;
+      padding: 5px 10px;
+      border: 1px solid transparent;
+      border-radius:8px;
+    }
+
+    .todo-menus a.active, .todo-menus a:hover {
+      border: 1px solid rgba(175, 47, 47, 0.2);
+    }
+
+    .todo-count {
+      color: #777;
+      font-weight: 300;
+      position: absolute;
+      left: 20px;
+    }
+  </style>
+</head>
+  <body>
+    <div class='app-container'>
+      <div class='todo-container'>
+        <div class='todo-form-container'>
+          <fom>
+            <input type="text" placeholder="What need to be done?">
+          </fom>
+        </div>
+        <div class='todo-list-container'>
+          <div class='todo-item-container'>
+            <a class='todo-item-toggle'>
+              <img src="./assets/green-tick.svg" alt="tick">
+            </a>
+            <div class='todo-item-content completed'>
+              Learn reactjs
+            </div>
+            <div class='todo-item-options'>
+              <a href="#" class='icon-btn'>
+                <img src="./assets/edit.svg" alt="edit">
+              </a>
+              <a href="#" class='icon-btn'>
+                <img src="./assets/delete.svg" alt="close">
+              </a>
+            </div>
+          </div>
+          <div class='todo-item-container'>
+            <a class='todo-item-toggle'>
+              <img src="./assets/green-tick.svg" alt="tick">
+            </a>
+            <div class='todo-item-content'>
+              Learn reactjs
+            </div>
+            <div class='todo-item-options'>
+              <a href="#" class='icon-btn'>
+                <img src="./assets/delete.svg" alt="close">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class='todo-footer-container'>
+          <div class='todo-count'>
+            2 items left
+          </div>
+          <div class='todo-menus'>
+            <a href="#" class='active'>All</a>
+            <a href="#">Active</a>
+            <a href="#">Complete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
