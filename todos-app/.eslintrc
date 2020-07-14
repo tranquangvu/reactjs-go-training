@@ -1,0 +1,19 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "no-alert": "off",
+    "no-console": "off",
+    "no-debugger": "off",
+    "jsx-quotes": ["error", "prefer-single"],
+    "max-len": ["error", 120, { "ignoreTemplateLiterals": true }],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "semi": ["error", "always"],
+    "prefer-promise-reject-errors": "off",
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
+    "react/prefer-stateless-function": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+    // "jsx-a11y/anchor-is-valid": "off"
+  }
+}
