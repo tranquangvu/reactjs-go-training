@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: #4d4d4d;
+}
+
+.app-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.todo-container {
+  width: 550px;
+  margin: 40px auto;
+}
