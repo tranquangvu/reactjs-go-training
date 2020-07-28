@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './index.css';
 
@@ -22,6 +23,10 @@ class TodoForm extends Component {
 
     const { onCreateTodo } = this.props;
     const { content } = this.state;
+
+    if (!content) {
+      return;
+    }
 
     onCreateTodo(content);
     this.clearContent();
@@ -50,5 +55,9 @@ class TodoForm extends Component {
     );
   }
 }
+
+TodoForm.propTypes = {
+  onCreateTodo: PropTypes.func,
+};
 
 export default TodoForm;

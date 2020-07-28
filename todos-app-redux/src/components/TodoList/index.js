@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import TodoItem from '../TodoItem';
 
@@ -6,7 +7,7 @@ import './index.css';
 
 class TodoList extends Component {
   render() {
-    const { todos, onToggleTodo, onDeleteTodo, onUpdateTodo } = this.props;
+    const { todos, onDeleteTodo, onUpdateTodo } = this.props;
 
     return (
       <div className='todo-list-container'>
@@ -14,7 +15,6 @@ class TodoList extends Component {
           <TodoItem
             key={todo.id}
             data={todo}
-            onToggleTodo={() => onToggleTodo(todo.id)}
             onDeleteTodo={() => onDeleteTodo(todo.id)}
             onUpdateTodo={(attributes) => onUpdateTodo(todo.id, attributes)}
           />
@@ -28,5 +28,19 @@ class TodoList extends Component {
     );
   }
 }
+
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      content: PropTypes.string,
+      completed: PropTypes.bool,
+      createdAt: PropTypes.number,
+      updatedAt: PropTypes.number,
+    }),
+  ),
+  onDeleteTodo: PropTypes.func,
+  onUpdateTodo: PropTypes.func,
+};
 
 export default TodoList;

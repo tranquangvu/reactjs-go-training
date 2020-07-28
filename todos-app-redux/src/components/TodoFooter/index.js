@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './index.css';
 
@@ -27,7 +28,7 @@ class TodoFooter extends Component {
           </a>
           <a
             href='#'
-            className={activeFilter === 'completed' ? 'completed' : null}
+            className={activeFilter === 'complete' ? 'active' : null}
             onClick={() => onChangeFilter('complete')}
           >
             Complete
@@ -44,5 +45,12 @@ class TodoFooter extends Component {
     );
   }
 }
+
+TodoFooter.propTypes = {
+  activeFilter: PropTypes.string,
+  incompletedCount: PropTypes.number,
+  onChangeFilter: PropTypes.func,
+  onClearComplete: PropTypes.func,
+};
 
 export default TodoFooter;

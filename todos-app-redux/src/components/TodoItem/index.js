@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './index.css';
 
@@ -35,8 +36,8 @@ class TodoItem extends Component {
   handleToggle = (e) => {
     e.preventDefault();
 
-    const { onToggleTodo } = this.props;
-    onToggleTodo();
+    const { onUpdateTodo, data: { completed } } = this.props;
+    onUpdateTodo({ completed: !completed });
   };
 
   handleDelete = (e) => {
@@ -121,5 +122,17 @@ class TodoItem extends Component {
     );
   }
 }
+
+TodoItem.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.string,
+    content: PropTypes.string,
+    completed: PropTypes.bool,
+    createdAt: PropTypes.number,
+    updatedAt: PropTypes.number,
+  }),
+  onDeleteTodo: PropTypes.func,
+  onUpdateTodo: PropTypes.func,
+};
 
 export default TodoItem;
