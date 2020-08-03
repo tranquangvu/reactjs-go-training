@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+
 import RootContainer from './containers/RootContainer';
+
+import configureStore from './store/configureStore';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <RootContainer />,
+  <Provider store={configureStore()}>
+    <RootContainer />
+  </Provider>,
   document.getElementById('root')
 );
 

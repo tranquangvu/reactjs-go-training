@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
 
-import configureStore from '../../store/configureStore';
+import Routes from '../../routes';
 
-const store = configureStore();
+import 'antd/dist/antd.css';
 
 class RootContainer extends Component {
   render() {
+    const { authenticated } = this.props;
+
     return (
-      <Provider store={store}>
-        <h1>Home</h1>
-      </Provider>
+      <div className='root-container'>
+        <Routes authenticated={authenticated} />
+      </div>
     );
   }
 }
 
-export default RootContainer;
+const mapStateToProps = ({ auth }) => ({
+  authenticated: auth.authenticated,
+});
+
+export default connect(mapStateToProps)(RootContainer);
