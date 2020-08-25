@@ -1,0 +1,27 @@
+
+.ant-list-vertical.article-list {
+  .ant-list-item-meta-title {
+    margin-bottom: 0;
+  }
+
+  .ant-list-item-meta {
+    margin-bottom: 8px;
+  }
+
+  .ant-list-item-action {
+    margin-top: 8px;
+
+    li {
+      padding-left: 0;
+      padding-right: 0;
+
+      .ant-list-item-action-split {
+        display: none;
+      }
+
+      button.ant-btn-link {
+        color: rgba(0,0,0,.45);
+      }
+    }
+  }
+}

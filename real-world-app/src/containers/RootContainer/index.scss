@@ -1,0 +1,23 @@
+.root-container {
+  .ant-layout {
+    background: #fff;
+  }
+
+  .ant-layout-header {
+    .ant-menu-horizontal {
+      text-align: center;
+    }
+  }
+
+  .ant-layout-content {
+    padding: 20px 0 40px 0;
+    margin: 0 auto;
+    width: 60%;
+  }
+
+  .ant-layout-footer {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+  }
+}
